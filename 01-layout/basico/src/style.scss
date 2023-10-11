@@ -1,0 +1,235 @@
+@use "./theme-A.scss" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    width: 90%;
+    margin: 1em auto;
+    
+    h2 {
+        margin-bottom: 1em;
+    }
+}
+
+.task-1 {
+    $colors: ("1": red, "2": blue, "3": green);
+
+    div[class^="container"] {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) 1.5fr repeat(4, 1fr);
+        grid-template-rows: 5em;
+        gap: 10px;
+        margin-bottom: 10px;
+
+        @media screen and (max-width:750px) {
+            gap: 0px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+
+            @media screen and (max-width:750px) {
+                border-radius: 0px;
+
+                &:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .color-box-text {
+                    display: none;
+                }
+
+            }
+        }
+    }
+
+    @mixin paint-container($color) {
+        .box {
+            .color-box-text {
+                color: complement($color);
+            }
+
+            &.base-color {
+                background-color: $color;
+                .color-box-text {
+                    color: white;
+                }
+            }
+        }
+
+        @for $i from 1 through 4 {
+            .darken-#{$i} {
+                background-color: darken($color, $i * 3%);
+            }
+
+            .lighten-#{$i} {
+                background-color: lighten($color, $i * 8%);
+            }
+        }
+    }
+
+    @each $index, $color in $colors {
+        .container-#{$index} {
+            @include paint-container($color)
+        }
+    }
+}
+
+.task-2 {
+    div.container {
+        display: flex;
+        flex-direction: column;
+
+        .box {
+            width: 120px;
+            min-height: 80px;
+            border: 1px solid grey;
+            padding: 1em;
+            border-radius: $radius;
+            font-family: cursive;
+
+            @media screen and (max-width:480px) {
+                width: auto;
+            }
+            
+            &.base {
+                background-color: $color;
+            } 
+            &.important {
+                background-color: darken($color, 35%);
+            } 
+            &.warning {
+                background-color: lighten($color, 45%);
+            }
+            &.shadow {
+                box-shadow: $shadow;
+            }
+        }
+
+        .font {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 100px;
+
+            .primary-font {
+                font-family: $font-1;
+            }
+
+            .secondary-font {
+                font-family: $font-2;
+            }
+        }
+    }
+}
+
+.task-3 {
+    div.title {
+        font-family: sans-serif;
+        font-size: 115%;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    nav {
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(0, 106, 123);
+        justify-content: space-between;
+
+        @media screen and (max-width:640px) {
+            flex-direction: column;
+        }
+
+        a {
+            display: flex;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            font-family: system-ui;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(47, 72, 88);
+            }
+        }
+    }
+}
+
+
+.task-4 {
+    $card-color: #7bbe46;
+
+    section {
+        display: inline-grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1em;
+        background-color: #ededed;
+        padding: 1em;
+        width: 100%;
+        gap: 30px;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            
+            .card-body {
+                padding: 1em;
+                background-color: white;
+                border: 1px solid lightgrey;
+                font-family: system-ui;
+                font-weight: lighter    ;
+
+                h1 {
+                    font-family: system-ui;
+                    font-size: 30px;
+                    font-weight: lighter;
+                    margin: 10px auto 20px;
+                }
+
+                p {
+                    font-weight: lighter;
+                }
+
+                footer {
+                    text-align: end;
+                    font-weight: normal;
+                    padding: 2em 0 1em;
+
+                    .date {
+                        color: $card-color;
+                    }
+                }
+
+                .button {
+                    height: 60px;
+                    background-color: $card-color;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 130%;
+                    font-weight: normal;
+                    cursor: pointer;
+                }
+            }
+    
+        }
+    }
+
+}
