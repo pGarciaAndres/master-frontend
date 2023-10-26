@@ -1,0 +1,200 @@
+$border-color: #ced0c1;
+$soft-black: #454545;
+$primary-color: #393e06;
+$secondary-color: #fafbe2;
+$header-color: #ccdf1c;
+$back-color: #f1f1f1;
+$card-color: #ffffff;
+$big-font: 120%;
+$small-font: 85%;
+$tiny-font: 70%;
+$text-space: 0 1em;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: sans-serif;
+
+  header {
+    display: flex;
+    flex-direction: column;
+
+    .toolbar {
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: $text-space;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+
+      input {
+        line-height: 20px;
+        padding: 0 5px;
+      }
+
+      div {
+        font-size: $small-font;
+        color: $soft-black;
+      }
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      padding: $text-space;
+      height: 60px;
+
+      background-color: $header-color;
+      color: white;
+      font-size: $big-font;
+    }
+  }
+
+  .page-container {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      overflow: unset;
+    }
+
+    nav {
+      background-color: $primary-color;
+
+      @media screen and (max-width: 768px) {
+        position: sticky;
+        top: 0;
+      }
+
+      .menu-container {
+        width: 170px;
+
+        @media screen and (max-width: 768px) {
+          width: auto;
+        }
+
+        .menu-title {
+          text-align: center;
+          text-transform: uppercase;
+          color: white;
+          font-size: $small-font;
+          font-weight: bold;
+          padding: 10px;
+
+          @media screen and (max-width: 768px) {
+            display: none;
+          }
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+
+          @media screen and (max-width: 768px) {
+            flex-direction: row;
+            text-align: center;
+            gap: 8px;
+            padding: 8px;
+            position: sticky;
+            top: 0;
+            overflow-x: auto;
+          }
+        }
+
+        li {
+          background-color: $secondary-color;
+          color: $soft-black;
+          font-size: $small-font;
+          border-bottom: 1px solid $border-color;
+          border-right: 1px solid $border-color;
+          padding: 8px;
+          cursor: pointer;
+
+          @media screen and (max-width: 768px) {
+            width: 100%;
+          }
+
+          &:hover {
+            background-color: darken($secondary-color, 10%);
+          }
+        }
+      }
+    }
+
+    main {
+      background-color: $back-color;
+      padding: 20px;
+      overflow-y: scroll;
+      /* En Desktop, no estoy seguro de si se pedía que, al hacer scroll, 
+      se ocultara el header y el menú se quedase sticky, sin embargo 
+      esta solución me parece más apropiada, el header siempre será
+      visible, y el scroll sólo se aplicará al contenedor de imágenes.
+      El comportamiento sticky lo he aplicado sólo a vista Tablet/Mobile :) */
+
+      @media screen and (max-width: 768px) {
+        overflow: auto;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-evenly;
+
+        @media screen and (max-width: 768px) {
+          gap: 5px;
+        }
+
+        .card.item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 10px;
+          padding: 15px;
+          width: 220px;
+          font-size: $small-font;
+          background-color: $card-color;
+          border: 1px solid #000;
+
+          @media screen and (max-width: 768px) {
+            width: 100%;
+            border: none;
+            flex-direction: row;
+            text-align: start;
+          }
+
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 1em;
+    background-color: $secondary-color;
+    color: $soft-black;
+    font-size: $tiny-font;
+  }
+}
