@@ -142,7 +142,7 @@ body {
     main {
       background-color: $back-color;
       padding: 20px;
-      overflow-y: scroll;
+      overflow-y: auto;
       /* En Desktop, no estoy seguro de si se pedía que, al hacer scroll, 
       se ocultara el header y el menú se quedase sticky, sin embargo 
       esta solución me parece más apropiada, el header siempre será
