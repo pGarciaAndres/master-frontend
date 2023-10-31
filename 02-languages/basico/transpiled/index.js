@@ -1,4 +1,4 @@
-// import { tsFunctions } from "./optional";
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -19,6 +19,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+var optional_1 = require("./optional");
 /* Módulo 2 - Lenguajes */
 var arrayA = ["Pepe", "Juan", "Luis"];
 var arrayB = ["Marta", "Raquel", "Ana"];
@@ -91,5 +93,5 @@ console.log(isBookRead(books, "Devastación")); // true
 console.log(isBookRead(books, "Canción de hielo y fuego")); // false
 console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
 // Opcional
-// console.log(`Primer elemento ts: ${tsFunctions.headts(arrayA)}`);
+console.log("Primer elemento ts: ".concat(optional_1.tsFunctions.headts(arrayA)));
 // 5. Slot Machine

@@ -1,4 +1,4 @@
-// import { tsFunctions } from "./optional";
+import { tsFunctions } from "./optional";
 
 /* Módulo 2 - Lenguajes */
 const arrayA = ["Pepe", "Juan", "Luis"];
@@ -87,6 +87,6 @@ console.log(isBookRead(books, "Canción de hielo y fuego")); // false
 console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
 
 // Opcional
-// console.log(`Primer elemento ts: ${tsFunctions.headts(arrayA)}`);
+console.log(`Primer elemento ts: ${tsFunctions.headts(arrayA)}`);
 
 // 5. Slot Machine
