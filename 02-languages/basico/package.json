@@ -1,0 +1,24 @@
+{
+  "name": "basico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "prestart": "npm run transpile && npm run copy",
+    "start": "concurrently \"npm:transpile -- -w\" npm:devserver",
+    "copy": "copyfiles --flat src/**/*.{html,css} transpiled",
+    "transpile": "tsc",
+    "devserver": "browser-sync start -c bs-config.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.29.3"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "copyfiles": "^2.4.1",
+    "typescript": "latest"
+  }
+}
