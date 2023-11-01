@@ -1,9 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.tsfunction = void 0;
-console.log("hola ts");
-var tsfunction = function (_a) {
-    var first = _a[0];
-    return first;
-};
-exports.tsfunction = tsfunction;
+export function isBookReadTS(books, titleToSearch) {
+    var _a, _b;
+    return (_b = (_a = books.find(function (book) { return book.title === titleToSearch; })) === null || _a === void 0 ? void 0 : _a.isRead) !== null && _b !== void 0 ? _b : false;
+}

@@ -1,4 +1,3 @@
-"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -10,6 +9,17 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -19,8 +29,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var optional_1 = require("./optional");
+var _SlothMachine_instances, _SlothMachine_coins, _SlothMachine_incrementCoins, _SlothMachine_win;
+import { isBookReadTS } from "./optional.js";
 /* Módulo 2 - Lenguajes */
 var arrayA = ["Pepe", "Juan", "Luis"];
 var arrayB = ["Marta", "Raquel", "Ana"];
@@ -89,9 +99,45 @@ function isBookRead(books, titleToSearch) {
     var _a, _b;
     return (_b = (_a = books.find(function (book) { return book.title === titleToSearch; })) === null || _a === void 0 ? void 0 : _a.isRead) !== null && _b !== void 0 ? _b : false;
 }
-console.log(isBookRead(books, "Devastación")); // true
-console.log(isBookRead(books, "Canción de hielo y fuego")); // false
-console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
+console.log("Leído: ", isBookRead(books, "Devastación")); // true
+console.log("Leído: ", isBookRead(books, "Canción de hielo y fuego")); // false
+console.log("Leído: ", isBookRead(books, "Los Pilares de la Tierra")); // false
 // Opcional
-console.log("Primer elemento ts: ".concat(optional_1.tsFunctions.headts(arrayA)));
+console.log("(TS) Leído: ", isBookReadTS(books, "Devastación")); // true
+console.log("(TS) Leído: ", isBookReadTS(books, "Canción de hielo y fuego")); // false
+console.log("(TS) Leído: ", isBookReadTS(books, "Los Pilares de la Tierra")); // false
 // 5. Slot Machine
+var SlothMachine = /** @class */ (function () {
+    function SlothMachine() {
+        _SlothMachine_instances.add(this);
+        _SlothMachine_coins.set(this, void 0);
+        __classPrivateFieldSet(this, _SlothMachine_coins, 0, "f");
+    }
+    SlothMachine.prototype.play = function () {
+        __classPrivateFieldGet(this, _SlothMachine_instances, "m", _SlothMachine_incrementCoins).call(this);
+        var result = Array(Math.random() >= 0.5, Math.random() >= 0.5, Math.random() >= 0.5);
+        if (result.every(function (item) { return !!item; })) {
+            console.log("Congratulations!!!. You won ".concat(__classPrivateFieldGet(this, _SlothMachine_coins, "f"), " coins!!"));
+            __classPrivateFieldGet(this, _SlothMachine_instances, "m", _SlothMachine_win).call(this);
+        }
+        else {
+            console.log("Good luck next time!!", "(".concat(__classPrivateFieldGet(this, _SlothMachine_coins, "f"), " coins in the machine)"));
+        }
+    };
+    return SlothMachine;
+}());
+_SlothMachine_coins = new WeakMap(), _SlothMachine_instances = new WeakSet(), _SlothMachine_incrementCoins = function _SlothMachine_incrementCoins() {
+    __classPrivateFieldSet(this, _SlothMachine_coins, __classPrivateFieldGet(this, _SlothMachine_coins, "f") + 1, "f");
+}, _SlothMachine_win = function _SlothMachine_win() {
+    __classPrivateFieldSet(this, _SlothMachine_coins, 0, "f");
+};
+var machine1 = new SlothMachine();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();

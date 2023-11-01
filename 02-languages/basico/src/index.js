@@ -1,4 +1,4 @@
-import { tsFunctions } from "./optional";
+import { isBookReadTS } from "./optional.js";
 
 /* Módulo 2 - Lenguajes */
 const arrayA = ["Pepe", "Juan", "Luis"];
@@ -82,11 +82,58 @@ function isBookRead(books, titleToSearch) {
   return books.find((book) => book.title === titleToSearch)?.isRead ?? false;
 }
 
-console.log(isBookRead(books, "Devastación")); // true
-console.log(isBookRead(books, "Canción de hielo y fuego")); // false
-console.log(isBookRead(books, "Los Pilares de la Tierra")); // false
+console.log("Leído: ", isBookRead(books, "Devastación")); // true
+console.log("Leído: ", isBookRead(books, "Canción de hielo y fuego")); // false
+console.log("Leído: ", isBookRead(books, "Los Pilares de la Tierra")); // false
 
 // Opcional
-console.log(`Primer elemento ts: ${tsFunctions.headts(arrayA)}`);
+console.log("(TS) Leído: ", isBookReadTS(books, "Devastación")); // true
+console.log("(TS) Leído: ", isBookReadTS(books, "Canción de hielo y fuego")); // false
+console.log("(TS) Leído: ", isBookReadTS(books, "Los Pilares de la Tierra")); // false
 
 // 5. Slot Machine
+class SlothMachine {
+  #coins;
+
+  constructor() {
+    this.#coins = 0;
+  }
+
+  #incrementCoins() {
+    this.#coins += 1;
+  }
+
+  #win() {
+    this.#coins = 0;
+  }
+
+  play() {
+    this.#incrementCoins();
+    const result = Array(
+      Math.random() >= 0.5,
+      Math.random() >= 0.5,
+      Math.random() >= 0.5
+    );
+
+    if (result.every((item) => !!item)) {
+      console.log(`Congratulations!!!. You won ${this.#coins} coins!!`);
+      this.#win();
+    } else {
+      console.log(
+        "Good luck next time!!",
+        `(${this.#coins} coins in the machine)`
+      );
+    }
+  }
+}
+
+const machine1 = new SlothMachine();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
