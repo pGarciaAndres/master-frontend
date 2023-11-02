@@ -29,26 +29,20 @@ const last = (array) => array.slice(-1);
 
 console.log(`Último elemento: ${last(arrayA)}`);
 
-// 2. Concat
-const concat = (a, b) => [a, ...b];
+// 2. Concat (Corregido)
+const concat = (a, b) => a.concat(b);
 
-console.log(`Concatenación: ${concat(arrayA, arrayB)}`);
+console.log("Concatenación: ", concat(arrayA, arrayB));
 
-// Opcional
-function concatPlus() {
-  const result = [];
-  const arrays = arguments[0];
-  for (var key in arrays) {
-    result.push(arrays[key]);
-  }
-  return result;
+// Opcional (Corregido)
+function concatPlus(array1, ...rest) {
+  return array1.concat(...rest);
 }
 
-console.log(`Concatenación Plus: ${concatPlus({ arrayA, arrayB, arrayC })}`);
+console.log("Concatenación Plus: ", concatPlus(arrayA, arrayB, arrayC));
 
 // 3. Clone Merge
 // Clone
-
 function clone(source) {
   return { ...source };
 }

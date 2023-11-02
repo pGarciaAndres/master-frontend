@@ -20,15 +20,6 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 var _SlothMachine_instances, _SlothMachine_coins, _SlothMachine_incrementCoins, _SlothMachine_win;
 import { isBookReadTS } from "./optional.js";
 /* Módulo 2 - Lenguajes */
@@ -56,19 +47,18 @@ console.log("Todos menos el \u00FAltimo: ".concat(init(arrayA)));
 // Last
 var last = function (array) { return array.slice(-1); };
 console.log("\u00DAltimo elemento: ".concat(last(arrayA)));
-// 2. Concat
-var concat = function (a, b) { return __spreadArray([a], b, true); };
-console.log("Concatenaci\u00F3n: ".concat(concat(arrayA, arrayB)));
-// Opcional
-function concatPlus() {
-    var result = [];
-    var arrays = arguments[0];
-    for (var key in arrays) {
-        result.push(arrays[key]);
+// 2. Concat (Corregido)
+var concat = function (a, b) { return a.concat(b); };
+console.log("Concatenación: ", concat(arrayA, arrayB));
+// Opcional (Corregido)
+function concatPlus(array1) {
+    var rest = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        rest[_i - 1] = arguments[_i];
     }
-    return result;
+    return array1.concat.apply(array1, rest);
 }
-console.log("Concatenaci\u00F3n Plus: ".concat(concatPlus({ arrayA: arrayA, arrayB: arrayB, arrayC: arrayC })));
+console.log("Concatenación Plus: ", concatPlus(arrayA, arrayB, arrayC));
 // 3. Clone Merge
 // Clone
 function clone(source) {
