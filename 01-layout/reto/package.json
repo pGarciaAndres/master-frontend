@@ -1,18 +1,17 @@
 {
-  "name": "extra",
+  "name": "reto",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx parcel ./src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.69.4"
-  },
-  "dependencies": {
-    "@parcel/transformer-sass": "^2.10.2"
+    "@parcel/transformer-sass": "^2.10.2",
+    "sass": "^1.69.5"
   }
 }
