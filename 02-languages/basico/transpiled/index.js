@@ -20,6 +20,15 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 var _SlothMachine_instances, _SlothMachine_coins, _SlothMachine_incrementCoins, _SlothMachine_win;
 import { isBookReadTS } from "./optional.js";
 /* Módulo 2 - Lenguajes */
@@ -48,7 +57,7 @@ console.log("Todos menos el \u00FAltimo: ".concat(init(arrayA)));
 var last = function (array) { return array.slice(-1); };
 console.log("\u00DAltimo elemento: ".concat(last(arrayA)));
 // 2. Concat (Corregido)
-var concat = function (a, b) { return a.concat(b); };
+var concat = function (a, b) { return __spreadArray(__spreadArray([], a, true), b, true); };
 console.log("Concatenación: ", concat(arrayA, arrayB));
 // Opcional (Corregido)
 function concatPlus(array1) {

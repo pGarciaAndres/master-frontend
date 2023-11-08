@@ -30,7 +30,7 @@ const last = (array) => array.slice(-1);
 console.log(`Último elemento: ${last(arrayA)}`);
 
 // 2. Concat (Corregido)
-const concat = (a, b) => a.concat(b);
+const concat = (a, b) => [...a, ...b];
 
 console.log("Concatenación: ", concat(arrayA, arrayB));
 
