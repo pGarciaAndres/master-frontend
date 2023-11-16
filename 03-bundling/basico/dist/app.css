@@ -1,0 +1,37 @@
+/*!*******************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./index.scss ***!
+  \*******************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  background-color: #434343;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+}
+
+h1 {
+  color: #242415;
+  font-family: math;
+  font-weight: 400;
+}
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+img {
+  width: 100px;
+}
+@media only screen and (max-width: 480px) {
+  img {
+    width: 50px;
+  }
+}
