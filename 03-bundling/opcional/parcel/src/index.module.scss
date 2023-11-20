@@ -1,0 +1,21 @@
+$theme-color: #434343;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  background-color: $theme-color;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .container {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.25em;
+  }
+}

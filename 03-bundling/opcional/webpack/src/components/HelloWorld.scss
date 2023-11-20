@@ -1,0 +1,11 @@
+$text-color: #00d8ff;
+
+h1 {
+  color: $text-color;
+  font-family: math;
+  font-weight: 400;
+
+  @media only screen and (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
