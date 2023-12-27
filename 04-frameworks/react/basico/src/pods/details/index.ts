@@ -1,0 +1,6 @@
+export * from './Details'
+export * from './utils/detailsUtils'
+export * from './icons/icons'
+export * from './hooks/useDetails'
+export * from './api/detailsAPI'
+export * from './api/detailsAPI.model'
