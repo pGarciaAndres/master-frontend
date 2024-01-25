@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div [ngClass]="'logo'" (click)="goHome()">
+      <img src="assets/logo.png" alt="logo" width="100px" />
+    </div>
+    <div *ngIf="isLogged()" [ngClass]="'session'">
+      <p>Welcome {{ getUsername() }}</p>
+      <div (click)="logout()">Logout</div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,19 @@
+h1 {
+  font-weight: 100;
+  text-align: center;
+}
+
+form {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+
+  mat-form-field {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}

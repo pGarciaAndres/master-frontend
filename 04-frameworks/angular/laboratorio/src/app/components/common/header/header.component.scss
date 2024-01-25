@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.session {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

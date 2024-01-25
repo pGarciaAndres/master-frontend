@@ -1,0 +1,37 @@
+<h1>Login</h1>
+<form (ngSubmit)="login()">
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="username"
+      name="username"
+      (focus)="focus()"
+      placeholder="master@lemoncode.net"
+      required
+      #usernameRef="ngModel"
+    />
+    <mat-error *ngIf="usernameRef.invalid && usernameRef.touched">
+      Usuario requerido.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      [(ngModel)]="password"
+      name="password"
+      (focus)="focus()"
+      type="password"
+      placeholder="12345678"
+      required
+      #passwordRef="ngModel"
+    />
+    <mat-error *ngIf="passwordRef.invalid && passwordRef.touched">
+      Password requerido.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-error *ngIf="errorLogin"> Credenciales incorrectas </mat-error>
+  <button mat-raised-button color="primary" type="submit">
+    Iniciar sesión
+  </button>
+</form>
