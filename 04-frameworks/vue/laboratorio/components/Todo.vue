@@ -12,6 +12,7 @@
           icon="pi pi-trash"
           aria-label="Delete"
           v-on:click="deleteTodo"
+          :disabled="editing"
           outlined
           rounded
         />
