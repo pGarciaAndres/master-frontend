@@ -25,7 +25,7 @@ describe('common/components/spinner/SpinnerComponent', () => {
     const usePromiseTrackerStub = jest
       .spyOn(reactPromiseTracker, 'usePromiseTracker')
       .mockImplementation(() => {
-        return { promiseInProgress: false };
+        return { promiseInProgress: true };
       });
 
     // Act
