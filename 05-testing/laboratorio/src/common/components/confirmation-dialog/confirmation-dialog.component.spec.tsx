@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 import userEvent from '@testing-library/user-event';
 
