@@ -1,6 +1,6 @@
-name: CI workflow
+name: Ci workflow
 
-on: [push, pull_request]
+on: push
 
 jobs:
   ci:
@@ -8,9 +8,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
       - name: Install
-        run: npm ci
-
-      - name: Unit tests
-        run: npm run test
+        run: npm install
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Tests
+        run: npm test
