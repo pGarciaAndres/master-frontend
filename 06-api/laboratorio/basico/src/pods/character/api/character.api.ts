@@ -22,7 +22,6 @@ export const getCharacter = async (id: string): Promise<Character> => {
 };
 
 export const saveCharacter = async (character: Character): Promise<boolean> => {
-  debugger;
   await Axios.put<Character>(
     `${mockCharacterListUrl}/${character.id}`,
     character
